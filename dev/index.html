@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dev | jiun blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="rail">
+      <a class="brand" href="/">0x</a>
+                              <nav class="rail-nav">
+        <a class="rail-btn" href="/"><span class="icon">⌂</span><span class="txt">home</span></a>
+        <a class="rail-btn" href="/security"><span class="icon">🔐</span><span class="txt">security</span></a>
+        <a class="rail-btn" href="/dev" aria-current="page"><span class="icon">⌘</span><span class="txt">dev</span></a>
+        <a class="rail-btn" href="/misc"><span class="icon">📖</span><span class="txt">Thesis</span></a>
+        <a class="rail-btn" href="/misc"><span class="icon">👾</span><span class="txt">misc</span></a>
+      </nav>
+      <div class="rail-bottom"><a class="rail-btn" href="/misc"><span class="icon">＋</span><span class="txt">more</span></a></div>
+    </aside>
+    <aside class="nav-panel">
+      <div class="nav-header"><div><div class="nav-title">security archive</div><div class="nav-sub">categories &amp; navigation</div></div><div class="status">online</div></div>
+      <div class="nav-scroll">
+        <div class="section-label">개발</div>
+        <a class="menu-item" href="/dev" aria-current="page"><div class="menu-icon mi-dev">DEV</div><div class="menu-meta"><div class="menu-name">개발</div><div class="menu-desc">일반 개발 · 프로젝트</div></div></a>
+        <a class="menu-item" href="/dev/projects" ><div class="menu-icon mi-dev">DEV</div><div class="menu-meta"><div class="menu-name">프로젝트</div><div class="menu-desc">정리 글 · 문서화</div></div></a>
+        
+                                        <div class="profile-mini">
+          <div class="row">
+            <div class="avatar-sm">0x</div>
+            <div>
+              <div class="name">jiun</div>
+              <div class="tag">security researcher</div>
+            </div>
+          </div>
+          <div class="mini-actions">
+            <a class="mini-chip" href="/about/portfolio">GitHub</a>
+            <a class="mini-chip" href="/posts/hello-github-io">Posts 24</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <main class="content">
+      <header class="topbar"><div class="crumb">~/dev</div><div><div class="top-title">development</div><div class="top-desc">개발 기록 · 프로젝트 · 문서화</div></div><div class="top-actions"><a class="top-btn" href="/dev/projects">projects</a><a class="top-btn" href="/posts/hello-github-io">posts</a><a class="top-btn" href="/security">security</a></div></header>
+      <section class="feed">
+        <div class="hero"><div class="hero-top"><div class="hero-avatar">DEV</div><div><div class="hero-eyebrow">$ ls ./dev</div><h1>구현 과정과 결과를 함께 남기는 공간</h1><p>정적 블로그 구조, 자동화 스크립트, 개인 프로젝트, 기술 문서를 모아두는 개발 섹션입니다.</p><div class="hero-tags"><span class="chip">Rust</span><span class="chip">Python</span><span class="chip">Automation</span><span class="chip">Docs</span></div></div></div></div>
+        <div class="post-list">
+          <article class="post-card"><div class="post-inner"><div class="post-top"><div><div class="badge b-dev">PROJECT</div><h3 class="post-title">Rust로 만드는 경량 포트 스캐너</h3><p class="post-summary">Tokio 기반 비동기 런타임으로 포트 스캐너를 구현하고, 배너 그래빙과 JSON 출력 구조까지 정리한 개발 기록입니다.</p><div class="post-meta"><span class="meta-pill">rust</span><span class="meta-pill">tokio</span><span class="meta-pill">network</span></div></div><div class="post-stat"><div class="label">stars</div><div class="value">128</div></div></div><div class="post-actions"><a class="action-btn primary" href="/dev/projects">프로젝트 보기</a></div></div></article>
+          <article class="post-card"><div class="post-inner"><div class="post-top"><div><div class="badge b-doc">DOC</div><h3 class="post-title">문서화와 배포 기록</h3><p class="post-summary">세팅, 배포, 트러블슈팅 메모를 이후에도 다시 활용할 수 있도록 문서 중심으로 구조화합니다.</p><div class="post-meta"><span class="meta-pill">deploy</span><span class="meta-pill">log</span><span class="meta-pill">docs</span></div></div><div class="post-stat"><div class="label">mode</div><div class="value">log</div></div></div></div></article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
