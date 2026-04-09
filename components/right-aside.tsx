@@ -10,7 +10,24 @@ export async function RightAside() {
   const posts = await getAllPosts();
   const ctfCount = posts.filter((post) => post.category === "ctf").length;
   const bugCount = posts.filter((post) => post.category === "bug").length;
+  const devCount = posts.filter((post) => post.category === "dev").length;
+  const thesisCount = posts.filter((post) => post.category === "thesis").length;
   const totalCount = posts.length;
+
+  function getCategoryCount(href: string) {
+    switch (href) {
+      case "/security/ctf":
+        return ctfCount;
+      case "/security/bug":
+        return bugCount;
+      case "/dev":
+        return devCount;
+      case "/thesis":
+        return thesisCount;
+      default:
+        return 0;
+    }
+  }
 
   return (
     <aside className="aside">
@@ -61,7 +78,7 @@ export async function RightAside() {
             <div className={`list-icon ${toneClass(item.tone)}`}>{item.icon}</div>
             <div>
               <div className="list-name">{item.name}</div>
-              <div className="list-sub">{item.sub}</div>
+              <div className="list-sub">{getCategoryCount(item.href)} posts</div>
             </div>
           </Link>
         ))}
