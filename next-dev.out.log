@@ -1,0 +1,148 @@
+
+> jiun-security-blog@1.0.0 dev
+> next dev
+
+   ▲ Next.js 15.2.2
+   - Local:        http://localhost:3000
+   - Network:      http://172.18.16.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.9s
+ ○ Compiling /dev ...
+ ✓ Compiled / in 16s (1044 modules)
+ GET / 200 in 9998ms
+ GET / 200 in 14857ms
+ GET / 200 in 409ms
+ GET / 200 in 646ms
+ ○ Compiling /security ...
+ ✓ Compiled /security in 1356ms (1046 modules)
+ GET /security/ 200 in 2420ms
+ GET /dev/ 200 in 300ms
+ ○ Compiling /thesis ...
+ ✓ Compiled /thesis in 1434ms (1048 modules)
+ GET /thesis/ 200 in 1878ms
+ GET /thesis/ 200 in 280ms
+ ○ Compiling /misc ...
+ ✓ Compiled /misc in 1252ms (1050 modules)
+ GET /misc/ 200 in 1833ms
+ GET /misc/ 200 in 242ms
+ GET /security/ 200 in 1057ms
+ ○ Compiling /posts/[slug] ...
+ ✓ Compiled /posts/[slug] in 2.2s (1060 modules)
+ GET /posts/lactf-2025-web-admin-panel/ 200 in 5965ms
+ GET /posts/lactf-2025-web-admin-panel/ 200 in 156ms
+ ○ Compiling /security/ctf ...
+ ✓ Compiled /security/ctf in 1758ms (1060 modules)
+ GET /security/ctf/ 200 in 3194ms
+ GET /security/ctf/ 200 in 933ms
+ GET /posts/hello-github-io/ 200 in 89ms
+ GET /security/ctf/ 200 in 165ms
+ GET /security/ctf/ 200 in 177ms
+ GET /posts/hello-github-io/ 200 in 155ms
+ GET /security/ 200 in 175ms
+ ○ Compiling /security/bug ...
+ ✓ Compiled /security/bug in 1735ms (1062 modules)
+ GET /security/bug/ 200 in 3809ms
+ GET /security/bug/ 200 in 316ms
+ GET /security/bug/ 200 in 302ms
+ GET /security/ctf/ 200 in 253ms
+ GET /security/bug/ 200 in 191ms
+ GET /security/ctf/ 200 in 153ms
+ GET /security/bug/ 200 in 376ms
+ GET /posts/stored-xss-svg-upload-bypass/ 200 in 203ms
+ GET /security/bug/ 200 in 188ms
+ GET /security/ctf/ 200 in 144ms
+ GET /posts/hello-github-io/ 200 in 209ms
+ GET /security/ 200 in 281ms
+ GET /posts/hello-github-io/ 200 in 741ms
+ GET / 200 in 275ms
+ GET /dev/ 200 in 481ms
+ ○ Compiling /dev/projects ...
+ ✓ Compiled /dev/projects in 2.9s (1064 modules)
+ GET /dev/projects/ 200 in 5548ms
+ GET /dev/projects/ 200 in 690ms
+ GET /thesis/ 200 in 711ms
+ ○ Compiling /misc ...
+ ✓ Compiled /misc in 1234ms (763 modules)
+ GET /misc/ 200 in 2111ms
+ GET /misc/ 200 in 350ms
+ GET /thesis/ 200 in 170ms
+ GET /dev/ 200 in 195ms
+ GET /thesis/ 200 in 208ms
+ GET /security/ 200 in 633ms
+ GET /dev/ 200 in 142ms
+ GET /thesis/ 200 in 200ms
+ GET /dev/ 200 in 88ms
+ GET /security/ 200 in 184ms
+ GET /security/ctf/ 200 in 159ms
+ GET /security/ 200 in 213ms
+ GET /security/ctf/ 200 in 396ms
+ GET /security/bug/ 200 in 136ms
+ GET /security/ctf/ 200 in 171ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 4.3s (1055 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5954ms
+ GET /dev/ 200 in 649ms
+ GET /thesis/ 200 in 242ms
+ GET /dev/ 200 in 200ms
+ GET /thesis/ 200 in 136ms
+ GET /misc/ 200 in 235ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1918ms (751 modules)
+ GET /dev/ 200 in 3851ms
+ GET / 200 in 5670ms
+ GET /dev/ 200 in 286ms
+ ○ Compiling /dev/projects ...
+ ✓ Compiled /dev/projects in 2s (751 modules)
+ GET /dev/projects/ 200 in 2592ms
+ GET /dev/projects/ 200 in 1182ms
+ ○ Compiling /posts/[slug] ...
+ ✓ Compiled /posts/[slug] in 2.7s (761 modules)
+ GET /posts/rust-port-scanner/ 200 in 5137ms
+ GET /dev/ 200 in 182ms
+ GET /dev/projects/ 200 in 227ms
+ GET /posts/rust-port-scanner/ 200 in 157ms
+ GET /security/ctf/ 200 in 137ms
+ ○ Compiling /security ...
+ ✓ Compiled /security in 1397ms (761 modules)
+ GET /security/ 200 in 2485ms
+ GET /security/ 200 in 207ms
+ GET /thesis/ 200 in 134ms
+ GET /dev/ 200 in 142ms
+ GET /security/ 200 in 148ms
+ GET /security/ctf/ 200 in 235ms
+ ○ Compiling /security/bug ...
+ ✓ Compiled /security/bug in 1286ms (760 modules)
+ GET /security/bug/ 200 in 1704ms
+ GET /security/bug/ 200 in 675ms
+ GET /security/ctf/ 200 in 172ms
+ GET /security/ 200 in 202ms
+ GET /security/ctf/ 200 in 558ms
+ GET /security/bug/ 200 in 177ms
+ GET /security/ctf/ 200 in 136ms
+ GET /security/bug/ 200 in 181ms
+ GET /posts/stored-xss-svg-upload-bypass/ 200 in 219ms
+ ✓ Compiled in 7.6s (754 modules)
+ ✓ Compiled in 5.7s (754 modules)
+ GET /posts/stored-xss-svg-upload-bypass/ 200 in 6623ms
+ GET /posts/stored-xss-svg-upload-bypass/ 200 in 593ms
+ ○ Compiling /_error ...
+ GET /security/bug/ 500 in 6087ms
+ GET /posts/stored-xss-svg-upload-bypass/ 200 in 2621ms
+ ✓ Compiled /_not-found in 12.3s (1393 modules)
+ GET /_next/static/css/app/layout.css?v=1775543583657 404 in 10805ms
+ GET /_next/static/chunks/webpack.js?v=1775543583657 404 in 10847ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 10765ms
+ GET /_next/static/chunks/app/posts/%5Bslug%5D/page.js 404 in 10763ms
+ GET /_next/static/chunks/main-app.js?v=1775543583657 404 in 10752ms
+ GET / 200 in 499ms
+ GET /_next/static/css/app/layout.css?v=1775543596680 404 in 261ms
+ GET /_next/static/chunks/app/page.js 404 in 208ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 231ms
+ GET /_next/static/chunks/main-app.js?v=1775543596680 404 in 242ms
+ GET / 200 in 921ms
+ GET / 200 in 1186ms
+ GET /_next/static/css/app/layout.css?v=1775543634841 404 in 765ms
+ GET /_next/static/chunks/main-app.js?v=1775543634841 404 in 774ms
+ GET /_next/static/chunks/app/page.js 404 in 771ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 766ms
