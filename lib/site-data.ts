@@ -142,7 +142,7 @@ export const pages = {
     railKey: "home" as const,
     crumb: "~/home",
     topTitle: "home",
-    topDesc: "starting point for the GitHub Pages blog",
+    topDesc: "home page",
     topActions: [
       { href: "/security", label: "search" },
       { href: "/posts/hello-github-io", label: "posts" },
@@ -152,8 +152,8 @@ export const pages = {
       avatar: "0x",
       eyebrow: "$ whoami",
       title: "SIM JI UN ",
-      body: "This blog records security and development work in one place. It is structured around web exploitation notes, CTF writeups, bug bounty findings, technical documentation, and long-term study logs.",
-      tags: ["Web Hacking", "Bug Bounty", "Reverse Engineering", "Python / Rust / Go"]
+      body: "hello world!",
+      tags: ["Web Hacking", "Bug Bounty"]
     },
     sectionTitle: "$ recent_posts",
     sectionDesc: "rebuilt as a post feed instead of a chat layout",
