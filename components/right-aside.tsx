@@ -1,11 +1,17 @@
 import Link from "next/link";
 import { rightAside } from "@/lib/site-data";
+import { getAllPosts } from "@/lib/posts";
 
 function toneClass(tone: string) {
   return `li-${tone}`;
 }
 
-export function RightAside() {
+export async function RightAside() {
+  const posts = await getAllPosts();
+  const ctfCount = posts.filter((post) => post.category === "ctf").length;
+  const bugCount = posts.filter((post) => post.category === "bug").length;
+  const totalCount = posts.length;
+
   return (
     <aside className="aside">
       <section className="card profile-card">
@@ -14,24 +20,24 @@ export function RightAside() {
           <div className="avatar-lg">0x</div>
           <div>
             <div className="name-lg">jiun</div>
-            <div className="handle">@jiun / security-blog</div>
+            <div className="handle">@jiun / blog</div>
           </div>
         </div>
         <p className="bio">
-          Interested in web security, CTF, bug bounty, reversing, and systems. The goal is to leave structured
+          Interested in web security, CTF, bug bounty. The goal is to leave structured
           records rather than scattered notes.
         </p>
         <div className="stats">
           <div className="stat-box">
-            <div className="v">47+</div>
+            <div className="v">{ctfCount}</div>
             <div className="k">ctf</div>
           </div>
           <div className="stat-box">
-            <div className="v">12+</div>
+            <div className="v">{bugCount}</div>
             <div className="k">bugs</div>
           </div>
           <div className="stat-box">
-            <div className="v">24</div>
+            <div className="v">{totalCount}</div>
             <div className="k">posts</div>
           </div>
         </div>

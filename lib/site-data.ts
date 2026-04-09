@@ -151,7 +151,7 @@ export const pages = {
     hero: {
       avatar: "0x",
       eyebrow: "$ whoami",
-      title: "jiun / security researcher & developer",
+      title: "SIM JI UN ",
       body: "This blog records security and development work in one place. It is structured around web exploitation notes, CTF writeups, bug bounty findings, technical documentation, and long-term study logs.",
       tags: ["Web Hacking", "Bug Bounty", "Reverse Engineering", "Python / Rust / Go"]
     },
@@ -497,7 +497,7 @@ export const pages = {
 };
 
 export const rightAside = {
-  skills: ["Web Hacking", "Bug Bounty", "Reverse Eng.", "Binary Exploit", "Python", "Rust", "Go", "OSCP"],
+  skills: ["Web Hacking", "Bug Bounty"],
   categories: [
     { href: "/security/ctf", icon: "CTF", tone: "red", name: "CTF / Wargame", sub: "7 posts" },
     { href: "/security/bug", icon: "BUG", tone: "yellow", name: "Bug Bounty", sub: "4 posts" },
