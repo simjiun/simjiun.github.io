@@ -1,13 +1,24 @@
+import fs from "node:fs";
+import path from "node:path";
 import { HeroBlock, MarkdownContent } from "@/components/content-blocks";
 import { SiteShell } from "@/components/site-shell";
-import { getAllPosts, getPostBySlug, getPostNavSections, getPostsByCategory } from "@/lib/posts";
+import { getPostBySlug, getPostNavSections, getPostsByCategory } from "@/lib/posts";
 import { notFound } from "next/navigation";
 
 export const dynamicParams = false;
+export const dynamic = "force-static";
 
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post) => ({ slug: post.slug }));
+export function generateStaticParams() {
+  const postsDirectory = path.join(process.cwd(), "content", "posts");
+
+  if (!fs.existsSync(postsDirectory)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(postsDirectory)
+    .filter((file) => file.endsWith(".md") && !file.startsWith("_"))
+    .map((file) => ({ slug: file.replace(/\.md$/, "") }));
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
