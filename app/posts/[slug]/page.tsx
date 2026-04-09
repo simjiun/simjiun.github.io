@@ -3,13 +3,15 @@ import { SiteShell } from "@/components/site-shell";
 import { getAllPosts, getPostBySlug, getPostNavSections, getPostsByCategory } from "@/lib/posts";
 import { notFound } from "next/navigation";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const posts = await getAllPosts();
   return posts.map((post) => ({ slug: post.slug }));
 }
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function PostPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const post = await getPostBySlug(slug);
 
   if (!post) {
