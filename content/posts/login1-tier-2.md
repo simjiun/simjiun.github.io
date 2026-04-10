@@ -171,7 +171,7 @@ app.run(host='0.0.0.0', port=8000)
 ```
 - admin 계정을 로그인하여 /admin 엔드포인트에 진입하면 플래그 획득 가능
 - /forgot_password 엔드포인트 확인 하면패스워드를 하나하나 추출해내야 함
-![step1](/public/images/login1.png)
+![step1](/images/login1.png)
 - backupCode가 옴
 ```python
 def makeBackupcode():
@@ -245,7 +245,7 @@ def users(useridx):
 
     return "<script>alert('User Not Found.');history.back(-1);</script>";
 ```
-![step1](/public/images/login1-2.png)
+![step1](/images/login1-2.png)
 - Apple 계정의 UserLevel이 1(admin) 인것을 확인
 - 해당 계정에 백업코드(0~99)설정해 100개의 요청을 동시에 보내는 페이로드 작성
 
@@ -294,5 +294,5 @@ if __name__ == "__main__":
     pass
 ```
 - 해당 코드 실행 시 Apple 계정의 비밀번호가 123로 변경 
-![step1](/public/images/login1-3.png)
+![step1](/images/login1-3.png)
 - admin 엔드포인트 접근 가능 
