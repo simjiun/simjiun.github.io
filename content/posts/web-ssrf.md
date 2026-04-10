@@ -11,7 +11,7 @@ tags:
   - web
 statLabel: "tier"
 statValue: "2"
-heroEyebrow: "$ cat content/posts/login1-tier-2.md"
+heroEyebrow: "$ cat content/posts/web-ssrf.md"
 heroAvatar: "CTF"
 ---
 
