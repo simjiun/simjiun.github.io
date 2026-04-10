@@ -1,6 +1,6 @@
 ---
 title: "CSP BYPASS tier 2"
-summary: "CSP 우회 과정과 핵심 포인트를 정리한 CTF writeup."
+summary: "dreamhack"
 date: "2026-04-09"
 category: "ctf"
 section: "security"
@@ -19,7 +19,6 @@ heroAvatar: "CTF"
 
 # CSP BYPASS tier 2
 
-> Source: https://www.notion.so/CSP-BYPASS-tier-2-26b0e6bc768c801eb810f7cf82c624f7
 
 ## 문제 개요
 

@@ -1,6 +1,6 @@
 ---
 title: "LOGIN-1  tier 2"
-summary: "LOGIN-1 CTF writeup."
+summary: "dreamhack"
 date: "2026-04-10"
 category: "ctf"
 section: "security"

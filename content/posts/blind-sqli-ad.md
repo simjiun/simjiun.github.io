@@ -1,6 +1,6 @@
 ---
 title: "Blind SQLI advanced  tier 2"
-summary: "Blind SQLI CTF writeup."
+summary: "dreamhack"
 date: "2026-04-10"
 category: "ctf"
 section: "security"
@@ -65,8 +65,8 @@ if __name__ == '__main__':
 - SELECT * FROM users WHERE uid='{uid}’ 구문으로 계정이 존재하는지 확인하는 기능이 존재
 - 해당 코드는 사용자 입력이 그대로 받아 쿼리에 삽입되어 서버에 요청 보냄 sql injection  취약점 존재
 - 해당 서버는 조회 결과가 참일 때만 문자열을 화면에 보여줌 그러므로 blind sql injection 으로 admin 계정의 패스워드를 하나하나 추출해내야 함
-![step1](/images/BlindSQLI.png)
-![step1](/images/BlindSQLI2.png)
+![step1](/public/images/BlindSQLI.png)
+![step1](/public/images/BlindSQLI2.png)
 - ‘ # 과 admin’ #을 보낸 결과를 보아 주석이 통하고 조회 결과가 참일 경우  exists라고 화면에 띄워줌
 - 이를 통해 substring을 통한 추출 쿼리 생성
 - admin' and substring(upw,1,1)=’D’# → 테스트를 위해 플래그 형식에 맞는 구문을 넣었을 경우 참으로 결과가 나옴
@@ -155,5 +155,3 @@ extract_flag_hex()
 (SUBSTRING(upw, {char_pos}, 1) 헤딩 구문의 답으로 '이'로 나온다 하면 '이'의 HEX() 함수 통해 16진수로 변환하여 UUU111 이러한 형식으로 나타남
 ```
 - SUBSTRING을 통해 해당 16진수를 비교하여 플래그 추출 
-
-W

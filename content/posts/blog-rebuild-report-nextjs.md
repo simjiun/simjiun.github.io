@@ -1,6 +1,6 @@
 ---
 title: "Next.js 기반 보안 블로그 재구성 보고서"
-summary: "기존 정적 HTML 블로그를 Next.js + TypeScript + Markdown 기반으로 전환한 과정과 현재 기능을 정리한 개발 보고서."
+summary: "블로그를 Next.js + TypeScript + Markdown 기반으로 전환 기능을 정리한 개발 보고서."
 date: "2026-04-09"
 category: "dev"
 section: "dev"
@@ -117,15 +117,4 @@ heroAvatar: "DEV"
 - GitHub Pages 자동 배포 파이프라인 작동
 - UI 테마와 네비게이션 체계 운영 가능 상태
 
-## 8. 다음 단계 제안
-
-- 카테고리/태그 페이지 자동 생성 고도화
-- 검색/필터 기능 도입
-- 코드블록 하이라이팅 개선(Prism/Shiki)
-- 게시물 메타 스키마 검증(zod) 도입
-- GA/로그 분석 연동으로 콘텐츠 운영 지표 확보
-
 ---
-
-이 문서는 현재 블로그의 구조와 운영 방법을 빠르게 공유하기 위한 기준 문서다.  
-변경 발생 시 본 문서도 함께 갱신한다.
