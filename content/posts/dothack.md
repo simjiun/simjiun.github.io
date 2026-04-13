@@ -2,7 +2,7 @@
 title: ".HACK 컨퍼런스 2026 참가 후기"
 summary: "코엑스에서 열린 .HACK 컨퍼런스에서 학생 티켓으로 참가해 Tech Session 2개를 들은 후기."
 date: "2026-04-13"
-category: "conference"
+category: "thesis"
 section: "thesis"
 miscGroup: "records"
 badge: "CONFERENCE"
