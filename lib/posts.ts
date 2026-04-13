@@ -10,6 +10,7 @@ const postsDirectory = path.join(process.cwd(), "content", "posts");
 
 export type PostCategory = "ctf" | "bug" | "dev" | "thesis" | "misc";
 export type PostSection = "security" | "dev" | "thesis" | "misc";
+export type PostMiscGroup = "records" | "archive";
 
 export type PostMeta = {
   slug: string;
@@ -21,6 +22,7 @@ export type PostMeta = {
   badge: string;
   badgeTone: BadgeTone;
   tags: string[];
+  miscGroup?: PostMiscGroup;
   statLabel?: string;
   statValue?: string;
   heroEyebrow?: string;
@@ -41,6 +43,7 @@ type RawFrontmatter = {
   badge?: string;
   badgeTone?: BadgeTone;
   tags?: string[];
+  miscGroup?: PostMiscGroup;
   statLabel?: string;
   statValue?: string;
   heroEyebrow?: string;
@@ -59,16 +62,19 @@ function getPostSlugs() {
 }
 
 function normalizePost(slug: string, frontmatter: RawFrontmatter, content: string): PostMeta & { content: string } {
+  const section = frontmatter.section ?? "misc";
+
   return {
     slug,
     title: frontmatter.title ?? slug,
     summary: frontmatter.summary ?? "",
     date: frontmatter.date ?? "1970-01-01",
     category: frontmatter.category ?? "misc",
-    section: frontmatter.section ?? "misc",
+    section,
     badge: frontmatter.badge ?? frontmatter.category?.toUpperCase() ?? "POST",
     badgeTone: frontmatter.badgeTone ?? "doc",
     tags: frontmatter.tags ?? [],
+    miscGroup: section === "misc" ? frontmatter.miscGroup ?? "records" : undefined,
     statLabel: frontmatter.statLabel,
     statValue: frontmatter.statValue,
     heroEyebrow: frontmatter.heroEyebrow,
@@ -116,6 +122,11 @@ export async function getPostsByCategory(category: PostCategory) {
 export async function getPostsBySection(section: PostSection) {
   const posts = await getAllPosts();
   return posts.filter((post) => post.section === section);
+}
+
+export async function getPostsByMiscGroup(group: PostMiscGroup) {
+  const posts = await getAllPosts();
+  return posts.filter((post) => post.section === "misc" && post.miscGroup === group);
 }
 
 export function toPostCard(post: Post, primaryLabel = "read post"): PostCardData {

@@ -1,11 +1,11 @@
 import { HeroBlock, PostList } from "@/components/content-blocks";
 import { SiteShell } from "@/components/site-shell";
 import { pageNavSections, pages } from "@/lib/site-data";
-import { getPostsBySection, toPostCard } from "@/lib/posts";
+import { getPostsByMiscGroup, toPostCard } from "@/lib/posts";
 
 export default async function MiscPage() {
   const page = pages.misc;
-  const posts = await getPostsBySection("misc");
+  const posts = await getPostsByMiscGroup("records");
 
   return (
     <SiteShell
