@@ -6,7 +6,7 @@ category: "ctf"
 section: "security"
 badge: "CTF / Competition"
 badgeTone: "ctf"
-ctfGroup: "codegate"
+ctfGroup: "ctf"
 tags:
   - ctf
   - codegate
@@ -21,7 +21,7 @@ heroAvatar: "CTF"
 2026년 3월 28일(토), 하루 동안 진행된 **CODEGATE 2026 CTF 예선**에 동아리 인원들과 팀으로 참가했습니다.  
 결과는 **113위, 2000점**이었고, 저는 최종적으로 **2문제(Web 1, Misc 1)**를 해결했습니다.
 ![step1](/images/COGA1.png)
-![step1](/images/DHACK2.png)
+![step1](/images/COGA2.png)
 - 대회 시작 직후 MISC ,WEB 한 문제씩 풀었습니다. 
 - 하지만 이후 문제들에서 난도와 시간 압박이 겹치면서 막히기 시작했고, 여러 번 시도했지만 플래그를 찾지 못했습니다.
 - 개인적으로는 중간에 알바 일정이 겹쳐 끝까지 참여하지 못했던 점도 아쉬움으로 남았습니다.
