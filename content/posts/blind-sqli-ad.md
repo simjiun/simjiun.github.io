@@ -4,10 +4,11 @@ summary: "dreamhack"
 date: "2026-04-10"
 category: "ctf"
 section: "security"
-badge: "CTF / Wargame"
+badge: "Wargame"
+ctfGroup: "wargame"
 badgeTone: "ctf"
 tags:
-  - ctf
+  - wargame
   - web
   - SQLI
 statLabel: "tier"

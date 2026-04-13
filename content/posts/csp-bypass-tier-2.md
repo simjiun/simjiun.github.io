@@ -4,10 +4,11 @@ summary: "dreamhack"
 date: "2026-04-09"
 category: "ctf"
 section: "security"
-badge: "CTF / Wargame"
+badge: "Wargame"
 badgeTone: "ctf"
+ctfGroup: "wargame"
 tags:
-  - ctf
+  - wargame
   - web
   - csp
   - bypass

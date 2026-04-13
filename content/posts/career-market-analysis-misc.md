@@ -4,13 +4,12 @@ summary: "직무를 목표로 가치 우선순위를 정리하고, 채용 공고
 date: "2026-04-13"
 category: "misc"
 section: "misc"
+miscGroup: "records"
 badge: "CAREER ANALYSIS"
 badgeTone: "cert"
 tags:
   - career
   - market-analysis
-  - infosec
-  - pentest
 statLabel: "type"
 statValue: "report"
 heroEyebrow: "$ cat content/posts/career-market-analysis-misc.md"
