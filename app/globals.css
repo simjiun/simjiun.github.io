@@ -478,6 +478,7 @@ button{font:inherit}
 .markdown{
   line-height:1.9;
   color:var(--text);
+  font-size:18px;
 }
 .markdown > * + *{
   margin-top:16px;
@@ -491,9 +492,13 @@ button{font:inherit}
 .markdown h3{font-size:20px}
 .markdown p,.markdown li{
   color:var(--muted);
+  font-size:1.02em;
 }
 .markdown ul,.markdown ol{
   padding-left:20px;
+}
+.markdown blockquote{
+  font-size:1.02em;
 }
 .markdown a{
   color:var(--blue);
