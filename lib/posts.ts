@@ -8,7 +8,7 @@ import type { BadgeTone, NavSection, PostCardData } from "@/lib/site-data";
 
 const postsDirectory = path.join(process.cwd(), "content", "posts");
 
-export type PostCategory = "ctf" | "bug" | "dev" | "thesis" | "misc";
+export type PostCategory = "ctf" | "bug" | "dev" | "project" | "thesis" | "misc";
 export type PostSection = "security" | "dev" | "thesis" | "misc";
 export type PostMiscGroup = "records" | "archive";
 export type PostCtfGroup = "ctf" | "wargame";
@@ -170,6 +170,8 @@ function getCategoryRoute(category: PostCategory, ctfGroup?: PostCtfGroup) {
       return "/security/bug";
     case "dev":
       return "/dev/projects";
+    case "project":
+      return "/dev/projects";
     case "thesis":
       return "/thesis";
     case "misc":
@@ -185,6 +187,8 @@ function getCategoryLabel(category: PostCategory) {
       return "Bug Bounty";
     case "dev":
       return "Development";
+    case "project":
+      return "Project";
     case "thesis":
       return "Thesis";
     case "misc":
@@ -200,6 +204,8 @@ function getCategoryIcon(category: PostCategory) {
       return "BUG";
     case "dev":
       return "DEV";
+    case "project":
+      return "PRJ";
     case "thesis":
       return "PPR";
     case "misc":
@@ -213,6 +219,8 @@ function getCategoryTone(category: PostCategory) {
     case "bug":
       return "sec" as const;
     case "dev":
+      return "dev" as const;
+    case "project":
       return "dev" as const;
     case "thesis":
       return "doc" as const;

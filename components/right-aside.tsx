@@ -11,7 +11,7 @@ export async function RightAside() {
   const ctfCount = posts.filter((post) => post.category === "ctf" && (post.ctfGroup ?? "ctf") === "ctf").length;
   const wargameCount = posts.filter((post) => post.category === "ctf" && post.ctfGroup === "wargame").length;
   const bugCount = posts.filter((post) => post.category === "bug").length;
-  const devCount = posts.filter((post) => post.category === "dev").length;
+  const devCount = posts.filter((post) => post.category === "dev" || post.category === "project").length;
   const thesisCount = posts.filter((post) => post.category === "thesis").length;
   const totalCount = posts.length;
 
