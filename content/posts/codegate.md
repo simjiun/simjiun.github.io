@@ -10,11 +10,8 @@ ctfGroup: "codegate"
 tags:
   - ctf
   - codegate
-  - web
-  - misc
-  - 회고
-statLabel: "result"
-statValue: "113th / 2000 pts"
+statLabel: "CTF"
+statValue: "CODEGATE"
 heroEyebrow: "$ cat content/posts/codegate.md"
 heroAvatar: "CTF"
 ---
