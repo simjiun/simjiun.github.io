@@ -71,7 +71,8 @@ export const homeNavSections: NavSection[] = [
   {
     label: "security",
     items: [
-      { href: "/security/ctf", icon: "CTF", iconTone: "sec", name: "CTF / Wargame", desc: "writeups and study notes" },
+      { href: "/security/ctf", icon: "CTF", iconTone: "sec", name: "CTF", desc: "ctf challenge writeups" },
+      { href: "/security/wargame", icon: "WRG", iconTone: "sec", name: "Wargame", desc: "wargame study notes" },
       { href: "/security/bug", icon: "BUG", iconTone: "sec", name: "Bug Bounty", desc: "reports and vulnerability analysis" },
       { href: "/thesis", icon: "PPR", iconTone: "doc", name: "papers / conference", desc: "research review" }
     ]
@@ -89,7 +90,8 @@ export const pageNavSections = {
       label: "security",
       items: [
         { href: "/security", icon: "SEC", iconTone: "sec", name: "security", desc: "overview and categories" },
-        { href: "/security/ctf", icon: "CTF", iconTone: "sec", name: "CTF / Wargame", desc: "writeups and study notes" },
+        { href: "/security/ctf", icon: "CTF", iconTone: "sec", name: "CTF", desc: "ctf challenge writeups" },
+        { href: "/security/wargame", icon: "WRG", iconTone: "sec", name: "Wargame", desc: "wargame study notes" },
         { href: "/security/bug", icon: "BUG", iconTone: "sec", name: "Bug Bounty", desc: "reports and vulnerability analysis" }
       ]
     },
@@ -210,6 +212,7 @@ export const pages = {
     topDesc: "security research, CTF, and bug bounty",
     topActions: [
       { href: "/security/ctf", label: "ctf" },
+      { href: "/security/wargame", label: "wargame" },
       { href: "/security/bug", label: "bug" },
       { href: "/posts/hello-github-io", label: "posts" }
     ],
@@ -247,16 +250,16 @@ export const pages = {
     railKey: "security" as const,
     crumb: "~/security/ctf",
     topTitle: "ctf archive",
-    topDesc: "writeups, wargames, and study notes",
+    topDesc: "ctf challenge writeups",
     topActions: [
-      { href: "/posts/hello-github-io", label: "sample post" },
+      { href: "/security/wargame", label: "wargame" },
       { href: "/security", label: "overview" }
     ],
     hero: {
       avatar: "CTF",
       eyebrow: "$ ls ./security/ctf",
       title: "A category page for CTF notes",
-      body: "Writeups from contests and wargames are grouped here and linked to individual posts."
+      body: "Contest CTF writeups are grouped here and linked to individual posts."
     },
     posts: [
       {
@@ -268,6 +271,34 @@ export const pages = {
         statLabel: "level",
         statValue: "easy",
         primaryAction: { href: "/posts/hello-github-io", label: "read post" }
+      }
+    ]
+  },
+  securityWargame: {
+    railKey: "security" as const,
+    crumb: "~/security/wargame",
+    topTitle: "wargame archive",
+    topDesc: "wargame practice notes",
+    topActions: [
+      { href: "/security/ctf", label: "ctf" },
+      { href: "/security", label: "overview" }
+    ],
+    hero: {
+      avatar: "WRG",
+      eyebrow: "$ ls ./security/wargame",
+      title: "A category page for Wargame notes",
+      body: "Practice logs and structured notes from wargame-style challenges are grouped here."
+    },
+    posts: [
+      {
+        badge: "WARGAME",
+        badgeTone: "ctf" as const,
+        title: "wargame starter note",
+        summary: "Add posts with category=ctf and ctfGroup=wargame to publish them in this route.",
+        meta: ["wargame", "practice"],
+        statLabel: "group",
+        statValue: "wargame",
+        primaryAction: { href: "/security/wargame", label: "open route" }
       }
     ]
   },
@@ -499,7 +530,8 @@ export const pages = {
 export const rightAside = {
   skills: ["Web Hacking", "Bug Bounty"],
   categories: [
-    { href: "/security/ctf", icon: "CTF", tone: "red", name: "CTF / Wargame", sub: "7 posts" },
+    { href: "/security/ctf", icon: "CTF", tone: "red", name: "CTF", sub: "0 posts" },
+    { href: "/security/wargame", icon: "WRG", tone: "red", name: "Wargame", sub: "0 posts" },
     { href: "/security/bug", icon: "BUG", tone: "yellow", name: "Bug Bounty", sub: "4 posts" },
     { href: "/dev", icon: "DEV", tone: "green", name: "development", sub: "8 posts" },
     { href: "/thesis", icon: "DOC", tone: "pink", name: "papers / docs", sub: "2 posts" }

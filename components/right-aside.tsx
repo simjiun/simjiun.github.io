@@ -8,7 +8,8 @@ function toneClass(tone: string) {
 
 export async function RightAside() {
   const posts = await getAllPosts();
-  const ctfCount = posts.filter((post) => post.category === "ctf").length;
+  const ctfCount = posts.filter((post) => post.category === "ctf" && (post.ctfGroup ?? "ctf") === "ctf").length;
+  const wargameCount = posts.filter((post) => post.category === "ctf" && post.ctfGroup === "wargame").length;
   const bugCount = posts.filter((post) => post.category === "bug").length;
   const devCount = posts.filter((post) => post.category === "dev").length;
   const thesisCount = posts.filter((post) => post.category === "thesis").length;
@@ -20,6 +21,8 @@ export async function RightAside() {
         return ctfCount;
       case "/security/bug":
         return bugCount;
+      case "/security/wargame":
+        return wargameCount;
       case "/dev":
         return devCount;
       case "/thesis":

@@ -6,7 +6,7 @@ category: "misc"
 section: "misc"
 miscGroup: "archive"
 badge: "Automation Tool Lab"
-badgeTone: "misc"
+badgeTone: "cert"
 tags:
   - Tool
 statLabel: "study"

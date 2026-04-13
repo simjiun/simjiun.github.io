@@ -11,6 +11,7 @@ const postsDirectory = path.join(process.cwd(), "content", "posts");
 export type PostCategory = "ctf" | "bug" | "dev" | "thesis" | "misc";
 export type PostSection = "security" | "dev" | "thesis" | "misc";
 export type PostMiscGroup = "records" | "archive";
+export type PostCtfGroup = "ctf" | "wargame";
 
 export type PostMeta = {
   slug: string;
@@ -23,6 +24,7 @@ export type PostMeta = {
   badgeTone: BadgeTone;
   tags: string[];
   miscGroup?: PostMiscGroup;
+  ctfGroup?: PostCtfGroup;
   statLabel?: string;
   statValue?: string;
   heroEyebrow?: string;
@@ -44,6 +46,7 @@ type RawFrontmatter = {
   badgeTone?: BadgeTone;
   tags?: string[];
   miscGroup?: PostMiscGroup;
+  ctfGroup?: PostCtfGroup;
   statLabel?: string;
   statValue?: string;
   heroEyebrow?: string;
@@ -63,18 +66,20 @@ function getPostSlugs() {
 
 function normalizePost(slug: string, frontmatter: RawFrontmatter, content: string): PostMeta & { content: string } {
   const section = frontmatter.section ?? "misc";
+  const category = frontmatter.category ?? "misc";
 
   return {
     slug,
     title: frontmatter.title ?? slug,
     summary: frontmatter.summary ?? "",
     date: frontmatter.date ?? "1970-01-01",
-    category: frontmatter.category ?? "misc",
+    category,
     section,
     badge: frontmatter.badge ?? frontmatter.category?.toUpperCase() ?? "POST",
     badgeTone: frontmatter.badgeTone ?? "doc",
     tags: frontmatter.tags ?? [],
     miscGroup: section === "misc" ? frontmatter.miscGroup ?? "records" : undefined,
+    ctfGroup: category === "ctf" ? frontmatter.ctfGroup ?? "ctf" : undefined,
     statLabel: frontmatter.statLabel,
     statValue: frontmatter.statValue,
     heroEyebrow: frontmatter.heroEyebrow,
@@ -129,6 +134,11 @@ export async function getPostsByMiscGroup(group: PostMiscGroup) {
   return posts.filter((post) => post.section === "misc" && post.miscGroup === group);
 }
 
+export async function getPostsByCtfGroup(group: PostCtfGroup) {
+  const posts = await getAllPosts();
+  return posts.filter((post) => post.category === "ctf" && post.ctfGroup === group);
+}
+
 export function toPostCard(post: Post, primaryLabel = "read post"): PostCardData {
   return {
     badge: post.badge,
@@ -152,10 +162,10 @@ export function getPostNavItem(post: Post) {
   };
 }
 
-function getCategoryRoute(category: PostCategory) {
+function getCategoryRoute(category: PostCategory, ctfGroup?: PostCtfGroup) {
   switch (category) {
     case "ctf":
-      return "/security/ctf";
+      return ctfGroup === "wargame" ? "/security/wargame" : "/security/ctf";
     case "bug":
       return "/security/bug";
     case "dev":
@@ -217,7 +227,7 @@ export function getPostNavSections(currentPost: Post, relatedPosts: Post[]): Nav
       label: getCategoryLabel(currentPost.category).toUpperCase(),
       items: [
         {
-          href: getCategoryRoute(currentPost.category),
+          href: getCategoryRoute(currentPost.category, currentPost.ctfGroup),
           icon: getCategoryIcon(currentPost.category),
           iconTone: getCategoryTone(currentPost.category),
           name: `${getCategoryLabel(currentPost.category)} category`,
