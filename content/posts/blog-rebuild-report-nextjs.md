@@ -1,5 +1,5 @@
 ---
-title: "Next.js 기반 보안 블로그 재구성 보고서"
+title: "Next.js 기반 보안 블로그 보고서"
 summary: "현재 운영 중인 Next.js 블로그의 기능, 기술 스택, 라우팅 구조, 운영 규칙을 코드 기준으로 정리한 리빌드 보고서."
 date: "2026-04-13"
 category: "dev"
@@ -22,12 +22,15 @@ heroAvatar: "DEV"
 
 ## 1. 목적
 
-블로그는 `Next.js(App Router)` 기반으로 만들었고, 코드는 `TypeScript`로 작성했다.  
-콘텐츠는 `content/posts/*.md`에 Markdown으로 작성하고, frontmatter는 `gray-matter`로 파싱했다.  
-본문 렌더링은 `remark + remark-gfm + remark-html` 조합을 사용했다.
+기존 정적 HTML/CSS 중심 블로그를 유지보수성과 확장성을 높이기 위해  
+Next.js(App Router) + TypeScript + Markdown 구조로 재구성했다.
 
-페이지 구조는 `app/` 라우트 + `components/` UI + `lib/` 데이터 처리로 분리했고,  
-배포는 GitHub Actions에서 `npm ci -> npm run build` 후 `out` 폴더를 GitHub Pages에 올리는 방식으로 구성했다.
+현재 운영 목표는 다음 4가지다.
+
+- Markdown 파일만으로 게시물 발행
+- 섹션/카테고리 기반 라우팅 일관성 유지
+- GitHub Pages 자동 배포 안정화
+- 기존 사이버 스타일 UI를 유지하면서 구조화된 기록 축적
 
 ## 2. 기술 스택 (현재 기준)
 
