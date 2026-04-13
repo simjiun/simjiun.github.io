@@ -1,7 +1,7 @@
 ---
 title: "CODEGATE 2026 CTF 예선 참가 후기"
-summary: "3월 28일 하루 동안 동아리 팀과 함께 CODEGATE 2026 CTF 예선에 참가하며 느낀 점을 정리한 기록."
-date: "2026-03-28"
+summary: "CODEGATE 2026 CTF 예선에 참가하며 느낀 점 기록."
+date: "2026-04-13"
 category: "ctf"
 section: "security"
 badge: "CTF / Competition"
