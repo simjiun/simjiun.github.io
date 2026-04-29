@@ -176,6 +176,8 @@ function getCategoryRoute(category: PostCategory, ctfGroup?: PostCtfGroup) {
       return "/thesis";
     case "misc":
       return "/misc/archive";
+    default:
+      return "/misc/archive";
   }
 }
 
@@ -192,6 +194,8 @@ function getCategoryLabel(category: PostCategory) {
     case "thesis":
       return "Thesis";
     case "misc":
+      return "Misc";
+    default:
       return "Misc";
   }
 }
@@ -210,6 +214,8 @@ function getCategoryIcon(category: PostCategory) {
       return "PPR";
     case "misc":
       return "ETC";
+    default:
+      return "ETC";
   }
 }
 
@@ -225,6 +231,8 @@ function getCategoryTone(category: PostCategory) {
     case "thesis":
       return "doc" as const;
     case "misc":
+      return "cert" as const;
+    default:
       return "cert" as const;
   }
 }
