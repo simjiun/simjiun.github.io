@@ -1,6 +1,6 @@
 ---
-title: "XSSky: Detecting XSS Vulnerabilities"
-summary: "XSSky: Detecting XSS Vulnerabilities 논문 리뷰"
+title: "XSSky: Detecting XSS Vulnerabilities through Local Path-Persistent Fuzzing"
+summary: "XSSky: Detecting XSS Vulnerabilities through Local Path-Persistent Fuzzing 논문 리뷰"
 date: "2026-05-08"
 category: "thesis"
 section: "thesis"
@@ -18,8 +18,8 @@ heroEyebrow: "$ cat content/posts/XSSky.md"
 heroAvatar: "thesis"
 ---
 
-# XSSky: Detecting XSS Vulnerabilities
-through Local Path-Persistent Fuzzing
+# XSSky: Detecting XSS Vulnerabilities through Local Path-Persistent Fuzzing
+
 
 **학회:** USENIX Security Symposium 2025
 
