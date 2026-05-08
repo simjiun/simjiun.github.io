@@ -164,10 +164,10 @@ heroAvatar: "thesis"
 ### 2. 선언되지 않은 함수 로컬라이제이션 (Undeclared Function Localization)
 
 - source-sink path 안에 호출된 함수가 있으면 CPG에서 그 함수의 정의 위치를 찾아내고, 해당 함수 구현 코드를 PUT에 포함시켜 로컬에서 실행 가능하게 만든다.
-    - source-sink path에 등장하는 각 함수 호출에 대해 CPG에서 해당 호출 지점, 즉 call site를 식별
-    - CPG를 질의하여 실제 호출되는 함수를 찾는다.
-    - 함수 노드에 기록된 파일 정보와 시작 줄 번호 정보를 기반으로,  대상 애플리케이션의 코드 공간에서 해당 함수 구현을 추출
-    - 최종적으로  이러한 함수 정의 관련 코드 조각들을 원래 source-sink path에 통합
+    1. source-sink path에 등장하는 각 함수 호출에 대해 CPG에서 해당 호출 지점, 즉 call site를 식별
+    2. CPG를 질의하여 실제 호출되는 함수를 찾는다.
+    3. 함수 노드에 기록된 파일 정보와 시작 줄 번호 정보를 기반으로,  대상 애플리케이션의 코드 공간에서 해당 함수 구현을 추출
+    4. 최종적으로  이러한 함수 정의 관련 코드 조각들을 원래 source-sink path에 통합
 - 새로 통합된 함수가 또 다른 선언되지 않은 함수 호출을 포함할 수 있기 때문에 더 이상 선언되지 않은 함수 호출이 존재하지 않을 때까지 이러한 함수 정의들을 반복적으로 찾고 통합
 - 추출한 함수 정의들을 `function_definition.php`에 저장하고, PUT의 첫 줄에서 `include`하여 로컬 실행 가능성을 확보
 
@@ -176,10 +176,10 @@ heroAvatar: "thesis"
 - 클래스 내부에 정의된 객체 함수 호출(object function invocation)의 경우, 런타임 객체 타입을 정확히 알기 어렵다는 문제 발생
     - 오버-근사(over-approximate) 접근 방식 사용
     - false negative보다 false positive를 더 감수
-- 런타임 타입이 불확실한 객체 함수 호출
-    - 동일한 함수 시그니처(이름과 매개변수 수)를 가진 모든 가능한 함수 후보 집합 구성
-    - 각각의 함수 정의를 원래 source-sink path에 각각 독립적으로 통합하여 여러 개의 PUT를 생성
-    - 이 중 하나라도 취약점 발견 시 해당 경로 취약한 것으로 간주
+- 런타임 타입이 불확실한 객체 함수 호출(**over-approximate 접근 방식**)
+    1. 동일한 함수 시그니처(이름과 매개변수 수)를 가진 모든 가능한 함수 후보 집합 구성
+    2. 각각의 함수 정의를 원래 source-sink path에 각각 독립적으로 통합하여 여러 개의 PUT를 생성
+    3. 이 중 하나라도 취약점 발견 시 해당 경로 취약한 것으로 간주
 
 ---
 
@@ -289,7 +289,7 @@ marker가 일반 HTML 속성 값에 있음	HTML Attribute Context
     2. 피드백에서 sanitizer플래그가 지정된 문자열을 분석함으로써, XSSky는 어떤 문자들이 sanitizer에 의해 차단되고 있는지 식별
     3. 이에 대응하는 mutation 전략을 적용해 표적화된 mutation을 수행하고, 변형된 값을 다시 입력
     4. 피드백의 라인 번호 정보를 조사함으로써, XSSky는 더 많은 제한 조건이 우회되었는지를 판단하고, 이를 통해 현재 mutation 전략의 효과를 평가(line number 정보를 통해 현재 mutation이 진전이 있는지 확인)
-    5. 어떤 mutation 전략이 효과가 있으면 계속 밀고 간고, 반대로 진전이 없으면, bug oracle이 취약점을 확인할 때까지 다른 mutation 전략으로 전환
+    5. 어떤 mutation 전략이 효과가 있으면 계속 밀고 가고, 반대로 진전이 없으면, bug oracle이 취약점을 확인할 때까지 다른 mutation 전략으로 전환
 - 모든 mutation 전략을 다 사용했는데도 취약점을 트리거하는 테스트 케이스를 생성하지 못하면, XSSky는 다음 exploit grammar로 넘어가서 이 과정을 반복
 - 모든 exploit grammar를 테스트했음에도 성공하지 못한 경우에만 안전하다고 간주
 
