@@ -390,7 +390,7 @@ XSSky는 XSS 탐지를 단순한 source-sink 연결 문제가 아니라, 실제 
 
 ## 앞으로 해볼 것
 
-- **san**itizer 우회 테스트 모듈 제작
+- **sanitizer** 우회 테스트 모듈 제작
     - `htmlspecialchars()`, `strip_tags()`, `preg_replace()`를 통과한 입력값이 어떤 형태로 출력되는지 확인하고, context별로 위험 여부를 판단하는 실험
 - **간단한 XSS fuzzing payload generator**를 구현
     - HTML context, URL context, attribute context, JavaScript context에 맞는 payload를 따로 만들고, 대소문자 변형, 키워드 중복 삽입, invisible character 삽입 같은 mutation 전략을 적용해볼 수 있다.

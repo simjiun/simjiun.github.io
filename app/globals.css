@@ -535,6 +535,25 @@ button{font:inherit}
   border:none;
   background:transparent;
 }
+.markdown table{
+  width:100%;
+  border-collapse:collapse;
+  display:block;
+  overflow-x:auto;
+  margin:16px 0;
+  border:1px solid var(--line);
+}
+.markdown th,.markdown td{
+  border:1px solid var(--line);
+  padding:10px 12px;
+  text-align:left;
+  white-space:nowrap;
+}
+.markdown th{
+  background:var(--panel-2);
+  color:var(--text);
+  font-weight:700;
+}
 
 .aside{
   background:rgba(12,17,24,.9);
