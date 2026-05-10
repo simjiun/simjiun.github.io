@@ -1,17 +1,17 @@
 ﻿---
 title: "Fuzzing & Fuzzer"
-summary: "dreamhack"
-date: "2026-04-10"
-category: "ctf"
+summary: "BugBounty"
+date: "2026-05-11"
+category: "bug bounty"
 section: "security"
 badge: "Wargame"
-badgeTone: "ctf"
-ctfGroup: "wargame"
+badgeTone: "bug bounty"
+ctfGroup: "bug bounty"
 tags:
-  - wargame
-  - web
-statLabel: "tier"
-statValue: "2"
+  - fuzzing
+  - fuzzer
+statLabel: "bug bounty"
+statValue: "fuzzer"
 heroEyebrow: "$ cat content/posts/fuzzer.md"
 heroAvatar: "CTF"
 ---
