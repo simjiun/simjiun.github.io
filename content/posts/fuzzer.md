@@ -1,5 +1,5 @@
----
-title: "test"
+﻿---
+title: "Fuzzing & Fuzzer"
 summary: "dreamhack"
 date: "2026-04-10"
 category: "ctf"
@@ -12,15 +12,13 @@ tags:
   - web
 statLabel: "tier"
 statValue: "2"
-heroEyebrow: "$ cat content/posts/login1-tier-2.md"
+heroEyebrow: "$ cat content/posts/fuzzer.md"
 heroAvatar: "CTF"
 ---
 
 # Fuzzing & Fuzzer 정리
 
----
-
-## 1. Fuzzing이란?
+## 문제 개요
 
 Fuzzing은 프로그램에 다양한 입력값을 자동으로 넣어보면서 프로그램이 어떻게 반응하는지 관찰하는 소프트웨어 테스트 기법이다.
 
@@ -40,9 +38,9 @@ Crash / Hang / Timeout / Sanitizer Error 관찰
 
 여기서 중요한 점은 퍼징이 단순히 “아무 입력이나 넣어보는 것”으로 끝나지 않는다는 것이다. 현대적인 퍼저는 프로그램 실행 중 어떤 코드가 실행되었는지 관찰하고, 기존에 보지 못한 코드 경로를 발견한 입력을 다시 seed corpus에 저장한다. 이후 그 입력을 다시 변형하면서 점점 더 많은 분기와 깊은 로직을 탐색한다.
 
----
+## 분석 과정
 
-## 2. Fuzzing이 찾는 버그 유형
+### Fuzzing이 찾는 버그 유형
 
 Fuzzing의 최종 목적은 입력 처리 과정에서 발생하는 버그를 자동으로 찾는 것이다. 프로그램은 파일, 문자열, HTTP 요청, JSON, XML, 이미지, 압축 파일, URL, 네트워크 패킷 등 다양한 외부 입력을 처리한다. 문제는 개발자가 모든 비정상 입력을 직접 예상하기 어렵다는 점이다.
 
@@ -633,7 +631,7 @@ AFL++ dictionary는 입력 포맷의 token 힌트를 제공한다. HTTP, SQL, JS
 
 ---
 
-## 14. 정리
+## 정리
 
 Fuzzing은 단순히 랜덤 입력을 넣어 crash를 찾는 기법이 아니다. 현대적인 fuzzing은 coverage feedback을 이용해 새로운 코드 경로를 발견한 입력을 저장하고, 이를 다시 변이하면서 더 깊은 로직을 탐색한다.
 
@@ -662,3 +660,5 @@ crash를 재현한 뒤 원인을 분석하는 과정
 - AFL++ GitHub - Fuzzing in Depth: https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/fuzzing_in_depth.md
 - LLVM 공식 문서 - libFuzzer: https://llvm.org/docs/LibFuzzer.html
 - Google Project Zero GitHub - Jackalope: https://github.com/googleprojectzero/Jackalope
+
+
