@@ -228,40 +228,7 @@ Sanitizer Error: 메모리 오류, undefined behavior 등 탐지
 
 ### 심층 분석 - AFL++
 
-```text
-┌──────────────────────────────────────────────────────────────────────────────┐
-│                             AFL++ Fuzzing Loop                               │
-│                                                                              │
-│  ┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐       │
-│  │   Seed Corpus   │ ───▶ │ Input Scheduler │ ───▶ │ Mutation Engine │      │
-│  │  Initial Inputs │      │ Select PowerSch │      │ Havoc/Splice/CMP│       │
-│  └─────────────────┘      └─────────────────┘      └─────────────────┘       │
-│          ▲                                              │                    │
-│          │                                              ▼                    │
-│          │       ┌────────────────────────────────────────────────────┐      │
-│          │       │               Instrumentation Layer                │      │
-│          │       │ SanitizerCoverage · LLVM-PCGuard · GCC             │      │
-│          │       │ QEMU · Unicorn · Frida                             │      │
-│          │       └────────────────────────────────────────────────────┘      │
-│          │                    │                         │                    │
-│          │                    ▼                         ▼                    │
-│          │       ┌───────────────────┐   ┌───────────────────┐               │
-│          │       │    Target Proc    │   │  Crash Detector   │               │
-│          │       │    forkserver     │   │   ASAN / UBSAN    │               │
-│          │       │    persistent     │   │      Signal       │               │
-│          │       └───────────────────┘   └───────────────────┘               │
-│          │                    │                         │                    │
-│          │                    ▼                         ▼                    │
-│          │       ┌───────────────────┐   ┌──────────────────────┐            │
-│          └────── │ Shared Mem Bitmap │   │  Queue & Crashes     │            │
-│   feedback loop  │   shared mem map  │   │   Save New Paths     │            │
-│                  │   64KB edge map   │   │ queue/crashes/hangs  │            │
-│                  └───────────────────┘   └──────────────────────┘            │
-│                             ▲                        │                       │
-│                             └─────── feedback ──────┘                        │
-│                                                                              │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
+![image.png](/images/fuzzer.png)
 
 - **coverage-guided grey-box fuzzer**
 - 프로그램의 내부 소스코드를 완전히 분석하는 것은 아니지만, 실행 중 수집되는 **coverage 정보**를 이용해 더 많은 코드 경로를 탐색하는 퍼저
