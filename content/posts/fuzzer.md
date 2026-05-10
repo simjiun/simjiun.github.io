@@ -5,7 +5,7 @@ date: "2026-05-11"
 category: "bug"
 section: "security"
 badge: "bug bounty"
-badgeTone: "bug"
+badgeTone: "ctf"
 ctfGroup: "bug"
 tags:
   - fuzzing
@@ -13,7 +13,7 @@ tags:
 statLabel: "bug bounty"
 statValue: "fuzzer"
 heroEyebrow: "$ cat content/posts/fuzzer.md"
-heroAvatar: "CTF"
+heroAvatar: "BUG"
 ---
 
 # Fuzzing & Fuzzer
