@@ -13,7 +13,7 @@ tags:
 statLabel: "bug bounty"
 statValue: "fuzzer"
 heroEyebrow: "$ cat content/posts/fuzzer.md"
-heroAvatar: "BUG"
+heroAvatar: "CTF"
 ---
 
 # Fuzzing & Fuzzer
