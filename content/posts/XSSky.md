@@ -5,7 +5,7 @@ date: "2026-05-08"
 category: "thesis"
 section: "thesis"
 miscGroup: "records"
-badge: "CONFERENCE"
+badge: "thesis"
 badgeTone: "cert"
 tags:
   - USENIX

@@ -2,17 +2,17 @@
 title: "Learngitbranching Main"
 summary: "Learngitbranching"
 date: "2026-04-29"
-category: "misc"
-section: "misc"
+category: "dev"
+section: "dev"
 miscGroup: "archive"
 badge: "Learngitbranching Main"
-badgeTone: "cert"
+badgeTone: "dev"
 tags:
   - Git
 statLabel: "Git"
 statValue: "main"
 heroEyebrow: "$ cat content/posts/Learngitbranching_Main.md"
-heroAvatar: "MISC"
+heroAvatar: "DEV"
 ---
 
 # Learngitbranching Main

@@ -2,17 +2,17 @@
 title: "Learngitbranching Remote"
 summary: "Learngitbranching"
 date: "2026-04-29"
-category: "misc"
-section: "misc"
+category: "dev"
+section: "dev"
 miscGroup: "archive"
 badge: "Learngitbranching Remote"
-badgeTone: "cert"
+badgeTone: "dev"
 tags:
   - Git
 statLabel: "Git"
 statValue: "Remote"
 heroEyebrow: "$ cat content/posts/Learngitbranching_Remote.md"
-heroAvatar: "MISC"
+heroAvatar: "DEV"
 ---
 
 # Learngitbranching Remote
