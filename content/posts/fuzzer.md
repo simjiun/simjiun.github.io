@@ -2,18 +2,18 @@
 title: "Fuzzing & Fuzzer"
 summary: "BugBounty"
 date: "2026-05-11"
-category: "bug bounty"
+category: "bug"
 section: "security"
-badge: "Wargame"
-badgeTone: "bug bounty"
-ctfGroup: "bug bounty"
+badge: "bug bounty"
+badgeTone: "bug"
+ctfGroup: "bug"
 tags:
   - fuzzing
   - fuzzer
 statLabel: "bug bounty"
 statValue: "fuzzer"
 heroEyebrow: "$ cat content/posts/fuzzer.md"
-heroAvatar: "CTF"
+heroAvatar: "BUG"
 ---
 
 # Fuzzing & Fuzzer
