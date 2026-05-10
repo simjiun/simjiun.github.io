@@ -222,7 +222,7 @@ Sanitizer Error: 메모리 오류, undefined behavior 등 탐지
 | 한계 | target 구성과 harness 필요 | entrypoint 작성 필요 | 설정과 target 구성이 비교적 어려움 |
 - AFL++ : edge coverage를 활용해 새로운 상태 전이를 발견한 입력을 queue에 저장하고 반복적으로 변이하는 방식으로 동작
 - libFuzzer : 테스트 대상 라이브러리와 같은 프로세스 안에서 동작하며, 특정 fuzzing entrypoint를 통해 입력을 전달
-- Jackalope : Google Project Zero에서 공개한 customizable, distributed, coverage-guided fuzzer이며 black-box binary를 대상으로 사용할 수 있게 함
+- Jackalope : Google Project Zero에서 공개한 customizable, distributed, coverage-guided fuzzer이며 black-box binary를 대상으로 사용할 수 있다. 다만 실제 적용 시 target 구성과 실행 환경에 따라 난이도가 높아질 수 있다.
 
 ---
 
@@ -230,36 +230,37 @@ Sanitizer Error: 메모리 오류, undefined behavior 등 탐지
 
 ```bash
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│                              AFL++ 퍼징 루프                                  │
+│                              AFL++ 퍼징 루프                                │
 │                                                                              │
 │  ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐     │
 │  │   시드 코퍼스    │ ───▶ │   입력 스케줄러  │ ───▶ │    변이 엔진     │     │
-│  │ 초기 입력 파일들 │       │ 파워 스케줄 선택 │       │ Havoc/Splice/CMP │    │
+│  │ 초기 입력 파일들 │       │ 파워 스케줄 선택 │       │ Havoc/Splice/CMP │     │
 │  └─────────────────┘       └─────────────────┘       └─────────────────┘     │
 │          ▲                                               │                   │
 │          │                                               ▼                   │
 │          │        ┌──────────────────────────────────────────────┐          │
-│          │        │              계측 레이어                      │          │
-│          │        │           Instrumentation                    │          │
-│          │        │ SanitizerCoverage · LLVM-PCGuard · GCC       │          │
-│          │        │ QEMU · Unicorn · Frida                       │          │
+│          │        │                 계측 레이어                  │          │
+│          │        │              Instrumentation                 │          │
+│          │        │ LLVM mode · LTO mode · LLVM-PCGUARD · GCC   │          │
+│          │        │ QEMU · Unicorn · Frida                      │          │
 │          │        └──────────────────────────────────────────────┘          │
 │          │                    │                         │                   │
 │          │                    ▼                         ▼                   │
-│          │        ┌─────────────────┐      ┌───────────────────┐             │
-│          │        │   타겟 프로세스  │       │    크래시 감지     │             │
-│          │        │ forkserver      │      │ ASAN/UBSAN/Signal│             │
-│          │        │ persistent      │      └─────────────────┘             │
-│          │        └─────────────────┘                │                     │
-│          │                    │                      ▼                     │
-│          │                    ▼          ┌──────────────────────┐          │
-│          │        ┌─────────────────┐    │  큐 & 크래시 저장     │          │
-│          └─────── │ 공유 메모리      │    │ 새 경로 발견 시 저장  │          │
-│   feedback loop   │ 비트맵          │    │ queue/crashes/hangs  │          │
-│                   │ shared memory map │   └──────────────────────┘          │
-│                   └─────────────────┘                │                      │
-│                              ▲                       │                      │
-│                              └──────── feedback ─────┘                      │
+│          │        ┌───────────────────┐    ┌───────────────────┐            │
+│          │        │    타겟 프로세스   │    │     크래시 감지    │            │
+│          │        │ forkserver        │    │ ASAN / UBSAN      │            │
+│          │        │ persistent        │    │ Signal            │            │
+│          │        └───────────────────┘    └───────────────────┘            │
+│          │                    │                      │                      │
+│          │                    │                      ▼                      │
+│          │                    ▼          ┌──────────────────────┐           │
+│          │        ┌───────────────────┐  │   큐 & 크래시 저장    │           │
+│          └─────── │   공유 메모리      │  │  새 경로 발견 시 저장 │           │
+│   feedback loop   │   비트맵          │  │ queue/crashes/hangs  │           │
+│                   │   shared mem map   │  └──────────────────────┘           │
+│                   └───────────────────┘                │                       │
+│                              ▲                       │                       │
+│                              └──────── feedback ─────┘                       │
 │                                                                              │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -294,7 +295,7 @@ Sanitizer Error: 메모리 오류, undefined behavior 등 탐지
 
 - 타겟을 매번 `execve()`로 새로 실행하지 않고, 초기화가 끝난 프로세스를 기준으로 `fork()`해서 테스트 케이스를 실행
     - `execve()`, 동적 링킹, libc 초기화 비용을 한 번만 지불하고 이후에는 copy-on-write 기반으로 빠르게 복제
-    - 프로세스 생성 오버헤드를 크게 줄여 초당 수천 번의 실행이 가능
+    - 프로세스 생성 오버헤드를 크게 줄여 초당 실행 횟수를 크게 높일 수 있다.
 
 ##### 3.2 퍼시스턴트 모드(Persistent Mode)
 
@@ -417,7 +418,7 @@ afl-fuzz -i seeds -o out -S sec02 -p explore -- ./target @@
 | 설정 종류 | 대표 설정 | 탐지 대상 | 사용 상황 |
 | --- | --- | --- | --- |
 | AddressSanitizer | `AFL_USE_ASAN=1` | memory corruption, buffer overflow, use-after-free 등 | C/C++ 메모리 오류 탐지 |
-| UndefinedBehaviorSanitizer | `AFL_USE_UBSAN=1` | undefined behavior | 정수 overflow, 잘못된 포인터 사용 등 확인 |
+| UndefinedBehaviorSanitizer | `AFL_USE_UBSAN=1` | undefined behavior | signed integer overflow, 잘못된 포인터 사용 등 확인 |
 | MemorySanitizer | `AFL_USE_MSAN=1` | uninitialized memory read | 초기화되지 않은 메모리 사용 탐지 |
 | ThreadSanitizer | `AFL_USE_TSAN=1` | thread race condition | 멀티스레드 target |
 | LeakSanitizer | `AFL_USE_LSAN=1` | memory leak | 누수 탐지 |

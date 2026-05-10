@@ -476,59 +476,85 @@ button{font:inherit}
 .action-btn.primary:hover{background:rgba(115,166,255,.18);box-shadow:0 10px 24px rgba(18,48,92,.28)}
 
 .markdown{
-  line-height:1.9;
+  max-width:900px;
+  margin:0 auto;
+  line-height:1.82;
   color:var(--text);
-  font-size:18px;
+  font-size:17px;
+  letter-spacing:.01em;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
 }
 .markdown > * + *{
-  margin-top:16px;
+  margin-top:18px;
 }
 .markdown h1,.markdown h2,.markdown h3{
   line-height:1.25;
   font-weight:800;
+  color:var(--text);
+  scroll-margin-top:90px;
 }
 .markdown h1{font-size:34px}
 .markdown h2{font-size:26px}
 .markdown h3{font-size:20px}
 .markdown p,.markdown li{
-  color:var(--muted);
-  font-size:1.02em;
+  color:#cfd9e8;
+  font-size:1em;
+}
+.markdown p{
+  margin:0;
 }
 .markdown ul,.markdown ol{
-  padding-left:20px;
+  padding-left:24px;
+}
+.markdown li + li{
+  margin-top:8px;
 }
 .markdown blockquote{
-  font-size:1.02em;
+  font-size:1em;
+  border-left:4px solid var(--blue);
+  background:rgba(115,166,255,.08);
+  padding:14px 16px;
+  border-radius:10px;
+  color:#d8e3f3;
 }
 .markdown a{
   color:var(--blue);
+  text-decoration:underline;
+  text-underline-offset:3px;
 }
 .markdown img{
   display:block;
-  max-width:100%;
+  max-width:min(100%, 860px);
   width:auto;
   height:auto;
   object-fit:contain;
-  margin:12px auto;
+  margin:20px auto;
   border-radius:12px;
   border:1px solid var(--line);
+  box-shadow:0 12px 28px rgba(0,0,0,.22);
 }
 .markdown p > img{
-  margin:16px auto;
+  margin:20px auto;
 }
 .markdown code{
   font-family:var(--mono);
-  background:rgba(255,255,255,.04);
+  background:rgba(255,255,255,.06);
   border:1px solid var(--line);
   border-radius:8px;
   padding:2px 6px;
+  font-size:.92em;
 }
 .markdown pre{
   overflow:auto;
-  padding:16px;
+  padding:18px;
   border-radius:16px;
   border:1px solid var(--line);
   background:var(--panel-2);
+  line-height:1.65;
+}
+.markdown pre + p{
+  margin-top:18px;
 }
 .markdown pre code{
   padding:0;
@@ -540,19 +566,41 @@ button{font:inherit}
   border-collapse:collapse;
   display:block;
   overflow-x:auto;
-  margin:16px 0;
+  margin:20px 0;
   border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--panel-2);
 }
 .markdown th,.markdown td{
   border:1px solid var(--line);
-  padding:10px 12px;
+  padding:12px 14px;
   text-align:left;
-  white-space:nowrap;
+  white-space:normal;
+  line-height:1.6;
+  vertical-align:top;
 }
 .markdown th{
   background:var(--panel-2);
   color:var(--text);
   font-weight:700;
+}
+.markdown hr{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:28px 0;
+}
+
+@media (max-width: 720px){
+  .markdown{
+    font-size:16px;
+    line-height:1.76;
+  }
+  .markdown h1{font-size:30px}
+  .markdown h2{font-size:24px}
+  .markdown h3{font-size:19px}
+  .markdown table{
+    margin:16px 0;
+  }
 }
 
 .aside{
