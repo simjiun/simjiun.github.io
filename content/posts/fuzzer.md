@@ -185,11 +185,26 @@ Sanitizer Error: 메모리 오류, undefined behavior 등 탐지
 
 - 퍼저가 생성한 입력을 테스트 대상 코드에 전달하는 진입점
 - 퍼저와 테스트 대상 API 사이를 연결하는 **중간 연결 코드**
+- 실무에서는 fuzz target을 보통 **harness(하네스)** 라고도 부른다
 - libFuzzer 공식문서는 fuzz target을 “byte 배열을 받아 테스트 대상 API에 의미 있는 동작을 수행하는 함수”로 설명한다. 이 함수는 일반적으로 `LLVMFuzzerTestOneInput` 형태를 가진다
     - **libFuzzer**에서 **fuzz target** : 퍼저가 생성한 byte 배열 입력을 테스트 대상 API에 전달하는 진입점
     - libFuzzer는 기본적으로 `LLVMFuzzerTestOneInput`이라는 함수를 반복적으로 호출
     - 함수 내부에서 parser, decoder, validator와 같은 실제 테스트 대상 함수를 실행
     - fuzz target은 libFuzzer와 테스트 대상 코드 사이를 연결하는 harness 역할
+
+##### 하네스가 하는 일
+
+- 입력 전달: 퍼저 입력(`data`, `size`)을 parser/decoder/API가 받는 형태로 전달
+- 실행 경계 정의: 어디부터 어디까지를 한 번의 테스트로 볼지 결정
+- 상태 정리: 반복 실행 시 전역 상태, 힙 객체, 캐시 등 오염 상태를 초기화
+- 관찰성 확보: crash뿐 아니라 sanitizer 에러가 잘 드러나도록 단순 경로 유지
+
+##### 좋은 하네스 조건
+
+- 결정성: 같은 입력이면 같은 결과가 나오도록 시간/랜덤/외부 I/O 의존성을 줄임
+- 경량성: 입력 1개 처리 비용을 낮춰 초당 실행 횟수를 높임
+- 도달성: 단순 wrapper를 넘어서 실제 취약 로직까지 입력이 도달하도록 구성
+- 정리 안정성: persistent mode에서도 메모리 누수/상태 누적이 생기지 않게 설계
 
 #### 2. Sanitizer
 
@@ -198,6 +213,14 @@ Sanitizer Error: 메모리 오류, undefined behavior 등 탐지
        →  버그 존재하지만 crash가 안 나 못 잡는 상황 발생
     - `Sanitizer` : 프로그램 실행 중에 메모리 접근, 정수 연산, undefined behavior 등을 감시하는 도구
        →  숨어 있는 오류를 관찰 가능하게 만들 수 있다
+- **중요한 시점 구분**
+    - 부착 시점: sanitizer는 타겟과 하네스를 **컴파일/링크할 때** 삽입된다
+    - 탐지 시점: 퍼징 실행 중 sanitizer 계측 코드가 실제 오류를 발견하면 리포트를 출력한다
+- 하네스도 같은 sanitizer 옵션으로 빌드하면 계측 대상에 포함된다
+- coverage 계측과 sanitizer 계측은 목적이 다르다
+    - coverage 계측: 새로운 경로 발견 여부 판단
+    - sanitizer 계측: 메모리/UB 오류 탐지
+- binary-only 모드(QEMU/Frida 등)에서는 기존 바이너리에 컴파일타임 sanitizer를 새로 붙이기 어렵기 때문에 동적 계측 방식에 더 의존한다
         
         
         | Sanitizer | 탐지 대상 |
@@ -379,6 +402,7 @@ afl-fuzz -i seeds -o out -S sec02 -p explore -- ./target @@
 ##### 7.4 Sanitizer 설정
 
 - Sanitizer는 일반 실행에서는 조용히 지나갈 수 있는 메모리 오류나 undefined behavior를 퍼저가 감지 가능한 오류로 바꿔주는 역할
+- `AFL_USE_ASAN=1` 같은 설정은 퍼징 실행 옵션이 아니라 **빌드 시점 계측 설정**이다
 
 | 설정 종류 | 대표 설정 | 탐지 대상 | 사용 상황 |
 | --- | --- | --- | --- |
