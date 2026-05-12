@@ -221,15 +221,14 @@ Sanitizer Error: 메모리 오류, undefined behavior 등 탐지
     - coverage 계측: 새로운 경로 발견 여부 판단
     - sanitizer 계측: 메모리/UB 오류 탐지
 - binary-only 모드(QEMU/Frida 등)에서는 기존 바이너리에 컴파일타임 sanitizer를 새로 붙이기 어렵기 때문에 동적 계측 방식에 더 의존한다
-        
-        
-        | Sanitizer | 탐지 대상 |
-        | --- | --- |
-        | AddressSanitizer, ASan | buffer overflow, use-after-free, invalid free 등 |
-        | UndefinedBehaviorSanitizer, UBSan | signed integer overflow, 잘못된 포인터 정렬, undefined behavior |
-        | MemorySanitizer, MSan | 초기화되지 않은 메모리 읽기 |
-        | LeakSanitizer, LSan | memory leak |
-        | ThreadSanitizer, TSan | data race |
+
+| Sanitizer | 탐지 대상 |
+| --- | --- |
+| AddressSanitizer, ASan | buffer overflow, use-after-free, invalid free 등 |
+| UndefinedBehaviorSanitizer, UBSan | signed integer overflow, 잘못된 포인터 정렬, undefined behavior |
+| MemorySanitizer, MSan | 초기화되지 않은 메모리 읽기 |
+| LeakSanitizer, LSan | memory leak |
+| ThreadSanitizer, TSan | data race |
 
 ---
 
