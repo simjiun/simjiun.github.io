@@ -25,7 +25,9 @@ heroAvatar: "MISC"
 - AWS는 2025년 12월 3일 공개 후 수 시간 내에 중국 연계 위협 그룹의 악용 시도를 관측했다고 밝혔고,
 - Google Threat Intelligence Group은 여러 국가·산업군에서 다양한 payload와 침해 후 행위가 관찰되었다고 분석
 
-![image.png](attachment:9ed9ff2f-8860-4a26-8c6f-313d5d46267c:image.png)
+![image.png](/images/react.png)
+
+---
 
 # 라이브러리 배경
 
@@ -39,6 +41,8 @@ heroAvatar: "MISC"
 - 컴포넌트 일부를 서버에서 실행하고, 그 결과를 클라이언트에 전달하는 구조
 - 데이터베이스 접근, 파일 시스템 접근, 서버 전용 API 호출 등 클라이언트에 노출하면 안 되는 로직을 서버 측에서 처리할 수 있게 해줌
 - 즉, RSC는 단순 UI 렌더링 기능을 넘어 **서버 실행 환경과 직접 연결되는 React 기능**
+
+---
 
 # 취약점 정보
 
@@ -57,6 +61,8 @@ heroAvatar: "MISC"
     - react-server-dom-webpack
     - react-server-dom-parcel
     - react-server-dom-turbopack
+
+---
 
 # 취약점 발생 원리
 
@@ -115,7 +121,7 @@ Prototype Pollution 및 Function 생성자 접근
 
 # 패킷 분석
 
-[]()
+![image.png](/images/react2.png)
 
 - 서버는 요청 본문 안의 데이터를 React Flight의 **chunk**로 해석
 - Chunk 객체는 `status`, `value`, `reason`, `_respons` 속성을 가짐
@@ -201,7 +207,7 @@ then → 해당 prototype에 존재하는 then 메서드 접근
 <결과>
 fake chunk의 then 속성은 Chunk.prototype.then을 참조
 
-----------------------------------------------------------------------------------------
+---
 <이후 흐름> 
 fake chunk가 thenable 객체처럼 처리됨
    ↓
@@ -305,6 +311,8 @@ Function(_response._prefix + 참조값)
    ↓
 공격자 제어 문자열이 함수 객체로 생성
 ```
+
+---
 
 # 상세 공격 흐름
 
@@ -412,6 +420,9 @@ _formData.get 호출 과정에서 공격자 제어 문자열이 함수 객체로
 - `$B1337`을 처리하는 과정에서 `_formData.get()`이 호출
 - 공격 흐름에서는 이 함수가 이미 `Function` 생성자처럼 동작하도록 조작되어 있기 때문에 `_response._prefix`에 들어 있던 공격자 제어 문자열이 함수 객체로 만들어짐
 - 마지막으로 JavaScript의 Promise 처리 과정에서 해당 함수가 `then()`으로 호출되면, 공격자가 주입한 코드가 서버 환경에서 실행
+
+---
+
 # 6. 대응한 방법(공개 대응 기준 정리)
 
 React2Shell 계열 취약점은 "입력 검증 실패 + 역직렬화 경로 악용"이 결합된 형태이므로, 대응은 패치 적용만으로 끝내지 않고 애플리케이션·인프라·운영 절차를 함께 보완해야 한다.
@@ -436,6 +447,8 @@ React2Shell 계열 취약점은 "입력 검증 실패 + 역직렬화 경로 악�
 - 공지 직후 1차 조치: 노출 경로 임시 차단, 취약 버전 식별, 패치 배포 계획 수립.
 - 2차 조치: 로그 기반 침해 흔적 조사, 의심 세션 무효화, 자격 증명/토큰 순환.
 - 3차 조치: 재발 방지 정책 반영(배포 게이트, 보안 테스트 항목 추가, 모니터링 룰 상시화).
+
+---
 
 # 7. 보완이 미흡했던 부분
 
